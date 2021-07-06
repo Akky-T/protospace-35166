@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:edit, :move_to_index, :show]
+  before_action :set_prototype, only: [:edit, :move_to_index1, :show]
   before_action :move_to_index1, only: [:edit]
   before_action :move_to_index2, only: [:new]
 
@@ -59,6 +59,6 @@ class PrototypesController < ApplicationController
   end
 
   def move_to_index2
-    redirect_to root_path unless user_signed_in?
+    redirect_to new_view_registration_path unless user_signed_in?
   end
 end

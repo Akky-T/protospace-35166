@@ -9,7 +9,7 @@
       <% if user_signed_in? && current_user.id == @prototype.user_id %>
         <div class="prototype__manage">
           <%= link_to "編集する", edit_prototype_path(@prototype.id), class: :prototype__btn %>
-          <%= link_to "削除する", prototype_path, method: :delete, class: :prototype__btn %>
+          <%= link_to "削除する", prototype_path(@prototype), method: :delete, class: :prototype__btn %>
         </div>
       <% end %>
       <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
@@ -33,7 +33,7 @@
       <div class="prototype__comments">
         <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
         <% if user_signed_in? %>
-          <%= form_with model: [@prototype, @comment], local: true do |f| %>
+          <%= form_with(model: [@prototype, @comment], local: true) do |f| %>
             <div class="field">
               <%= f.label :text, "コメント" %><br />
               <%= f.text_field :text, id:"comment_text" %>
